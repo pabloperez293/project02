@@ -1,24 +1,31 @@
 <h3 class="mb-3 text-center">agregar comentarios </h3>
-<form>
+<form [formGroup]="agregarComentario" (ngSubmit)="agregar()">
 
   <div class="mb-3 text-center">
     <label for="titulo" class="form-label">titulo</label>
-    <input type="text" class="form-control text-center" id="titulo" placeholder="name@example.com">
+    <input formControlName="titulo" type="text" class="form-control text-center" id="titulo" placeholder="titulo" autocomplete="off">
+<!-- Esto aparece cuando no se agrega ningun contenido y aparece un "warning" -->
+    <span *ngIf="agregarComentario.get('titulo')?.invalid && agregarComentario.get('titulo')?.touched" class="text-danger">
+      El <strong> Titulo </strong> es requerido
+    </span>
   </div>
 
 
   <div class="mb-3 text-center">
     <label for="Creador" class="form-label">Creador</label>
-    <input type="text" class="form-control text-center" id="Creador" placeholder="name@example.com">
+    <input formControlName="creador" type="text" class="form-control text-center" id="Creador" placeholder="creador" autocomplete="off">
+    <span *ngIf="agregarComentario.get('creador')?.invalid && agregarComentario.get('creador')?.touched" class="text-danger">
+      Se requerie<strong> creador </strong>
+    </span>
   </div>
 
   <div class="mb-3 text-center">
-    <label for="texto" class="form-label text-center"> texto </label>
-    <textarea class="form-control" id="texto" rows="8"></textarea>
+    <label for="texto" class="form-label text-center"> Texto </label>
+    <textarea formControlName="texto" class="form-control" id="texto" rows="8" autocomplete="off"></textarea>
   </div>
 
-  <button class="btn btn-primary float-end">aceptar </button>
-  <button routerLink="/" class="btn btn-secondary float-center">volver</button>
+  <button type="submit" class="btn btn-primary float-end">Aceptar </button>
+  <button type="button" routerLink="/" class="btn btn-secondary float-center">Volver</button>
 
 </form>
 
