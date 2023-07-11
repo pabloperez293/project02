@@ -3,11 +3,11 @@
     <h3>Lista de comentarios</h3>
   </div>
   <div class="col-lg-6">
-    <div class="btn btn-primary">Ingresa comentario</div>
+    <div class="btn btn-primary float-end" routerLink="/agregar"> new comment</div>
   </div>
 </div>
 
-<table class="table table-hover mt-3" >
+<table *ngIf="listComentarios.length > 0" class="table table-hover mt-3" >
   <thead>
     <tr>
       <td>Titulo</td>
@@ -24,12 +24,18 @@
       <td>{{ comentario.titulo }}</td>
       <td>{{ comentario.creador }}</td>
       <td>{{ comentario.fechaCreacion | date:"dd/mm/yyyy" }}</td>
-      <td></td>
-      <td></td>
+      <td style="width: 10%;">
+        <button class="btn btn-success btn-sm float-end">Editar</button>
+      </td>
+      <td>
+        <button class="btn btn-danger btn-sm float-md">Eliminar</button>
+      </td>
     </tr>
 
   </tbody>
-
 </table>
+<div *ngIf="listComentarios.length == 0" class="row mt-5">
+  <h5> No hay comentarios para mostrar, vuelva a la brevedad</h5>
+</div>
 
 
