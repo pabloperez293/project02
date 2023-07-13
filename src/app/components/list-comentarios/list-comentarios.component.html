@@ -1,6 +1,6 @@
 <div class="row mt-3">
   <div class="col-lg-6">
-    <h3>Lista de comentarios</h3>
+    <h3>Lista de comentarios, projecto 02</h3>
   </div>
   <div class="col-lg-6">
     <div class="btn btn-primary float-end" routerLink="/agregar"> new comment</div>
@@ -21,19 +21,22 @@
 
   <tbody>
     <tr *ngFor="let comentario of listComentarios" >
-      <td>{{ comentario.titulo }}</td>
+      <td>
+  <!-- Con este routerlink le indicamos que la id del comentario queda linkeada  -->
+        <a [routerLink]="['/ver',1]">{{ comentario.titulo }}</a>
+      </td>
       <td>{{ comentario.creador }}</td>
       <td>{{ comentario.fechaCreacion | date:"dd/mm/yyyy" }}</td>
       <td style="width: 10%;">
         <button class="btn btn-success btn-sm float-end">Editar</button>
       </td>
-      <td>
-        <button class="btn btn-danger btn-sm float-md">Eliminar</button>
+      <td style="width: 10%;">
+        <button class="btn btn-danger btn-sm float-end">Eliminar</button>
       </td>
     </tr>
-
   </tbody>
 </table>
+
 <div *ngIf="listComentarios.length == 0" class="row mt-5">
   <h5> No hay comentarios para mostrar, vuelva a la brevedad</h5>
 </div>

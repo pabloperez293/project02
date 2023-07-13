@@ -15,16 +15,19 @@
     <label for="Creador" class="form-label">Creador</label>
     <input formControlName="creador" type="text" class="form-control text-center" id="Creador" placeholder="creador" autocomplete="off">
     <span *ngIf="agregarComentario.get('creador')?.invalid && agregarComentario.get('creador')?.touched" class="text-danger">
-      Se requerie<strong> creador </strong>
+      Se requiere el <strong> creador </strong>
     </span>
   </div>
 
   <div class="mb-3 text-center">
     <label for="texto" class="form-label text-center"> Texto </label>
     <textarea formControlName="texto" class="form-control" id="texto" rows="8" autocomplete="off"></textarea>
+    <span *ngIf="agregarComentario.get('texto')?.invalid && agregarComentario.get('texto')?.touched" class="text-danger">
+      Se requiere el <strong> texto </strong>
+    </span>
   </div>
 
-  <button type="submit" class="btn btn-primary float-end">Aceptar </button>
+  <button type="submit" [disabled]="agregarComentario.invalid" class="btn btn-primary float-end">Aceptar </button>
   <button type="button" routerLink="/" class="btn btn-secondary float-center">Volver</button>
 
 </form>
